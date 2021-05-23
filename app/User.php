@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Level;
+use App\Group;
 use App\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,5 +40,10 @@ class User extends Authenticatable
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class)->withTimestamps();
     }
 }
