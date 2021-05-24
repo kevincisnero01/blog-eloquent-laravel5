@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfilesTable extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
-            $table->bigInteger('user_id')->unsigned();
-            
-            $table->string("instagram")->nullable();
-            $table->string("gighub")->nullable();
-            $table->string("web")->nullable();
+
+            $table->bigInteger('profile_id')->unsigned();
+            $table->string('country');
 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('profile_id')->references('id')->on('profiles')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -37,6 +34,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('locations');
     }
 }
