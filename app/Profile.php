@@ -9,6 +9,6 @@ class Profile extends Model
 {
     public function location()
     {
-    	return $this->hasOne(Location::class);
+    	return $this->hasOne('App\Profile');
     }
 }
