@@ -4,9 +4,9 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Post::class, function (Faker $faker) {
     return [
-        'category_id' => $fake->rand(1,5),
-        'user_id' => $fake->rand(1,5),
-        'name' => $fake->sentence
+        'category_id' => rand(1,4),
+        'user_id' => rand(1,5),
+        'name' => $faker->sentence
 
     ];
 });

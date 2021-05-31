@@ -19,7 +19,7 @@ class CreateProfilesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             
             $table->string("instagram")->nullable();
-            $table->string("gighub")->nullable();
+            $table->string("github")->nullable();
             $table->string("web")->nullable();
 
             $table->timestamps();
