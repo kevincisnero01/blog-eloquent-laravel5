@@ -15,3 +15,24 @@ Route::get('/', function () {
 	$users = App\User::get();
     return view('welcome',['users' => $users]);
 });
+
+
+Route::get("/profile/{id}", function($id){
+
+	$user = App\User::find($id);
+
+	$posts = $user->posts()
+	->with('category','tags','image')
+	->withCount('comments')->get();
+
+	$videos = $user->videos()
+	->with('category','tags','image')
+	->withCount('comments')->get();
+
+	return view('profile',[
+		'user' => $user,
+		'posts' => $posts,
+		'videos' => $videos
+	]);
+
+})->name('profile');  

@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             $profile = $user->profile()->save(factory(App\Profile::class)->make());
 
             $profile->location()->save(factory(App\Location::class)->make());
-            $user->groups()->attach($this->array(rand(1,3)));
+            $user->groups()->attach($this->array(rand(1,3))); 
 
-            $user->image()->save(factory(App\Image::class)->make([ 'url' => 'http://lorempixel.com/90/90']));
+            $user->image()->save(factory(App\Image::class)->make(['url' => 'img/avatar-gente'.rand(1,7).'.png']));
         });
 
         factory(App\Category::class,4)->create();
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Post::class,40)->create()->each(function ($post){
 
-            $post->image()->save(factory(App\Image::class)->make());
+            $post->image()->save(factory(App\Image::class)->make(['url' => 'img/arte-publicacion'.rand(1,10).'.png']));
 
             $post->tags()->attach($this->array(rand(1,12)));
 
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Video::class,40)->create()->each(function ($video){
 
-            $video->image()->save(factory(App\Image::class)->make());
+            $video->image()->save(factory(App\Image::class)->make(['url' => 'img/arte-publicacion'.rand(1,10).'.png']));
 
             $video->tags()->attach($this->array(rand(1,12)));
 

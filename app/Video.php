@@ -8,7 +8,7 @@ class Video extends Model
 {
     public function category()
     {
-    	return $this->belognsTo(Category::class);
+    	return $this->belongsTo(Category::class);
     }
 
     public function user()
