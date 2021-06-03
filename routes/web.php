@@ -23,11 +23,13 @@ Route::get("/profile/{id}", function($id){
 
 	$posts = $user->posts()
 	->with('category','tags','image')
-	->withCount('comments')->get();
+	->withCount('comments')
+	->get();
 
 	$videos = $user->videos()
 	->with('category','tags','image')
-	->withCount('comments')->get();
+	->withCount('comments')
+	->get();
 
 	return view('profile',[
 		'user' => $user,
@@ -36,3 +38,26 @@ Route::get("/profile/{id}", function($id){
 	]);
 
 })->name('profile');  
+
+
+Route::get('/level/{id}', function ($id){
+	$level = App\Level::find($id);
+
+	$posts = $level->posts()
+	->with('category','image','tags')
+	->withCount('comments')
+	->get();
+
+
+	$videos = $level->posts()
+	->with('category','image','image')
+	->withCount('comments')
+	->get();
+
+	return view('level',[
+		'level' => $level,
+		'posts' => $posts,
+		'videos' => $videos
+	]);
+
+})->name('level');

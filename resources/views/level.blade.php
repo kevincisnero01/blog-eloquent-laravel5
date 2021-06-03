@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title> {{ $user->name }}</title>
+        <title>Usuarios de {{ $level->name }}</title>
         <link rel="stylesheet" href="{{ asset('plugins/bootstrap-4.1.3-dist/css/bootstrap.css') }}">
 
     </head>
@@ -14,42 +14,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 my-3 pt-3 shadow">
-
-                    <img src="{{ asset($user->image->url)}}" class="float-left ronded-circle mr-2">
-
-                    <h1>{{ $user->name}} </h1>
-                    <h3>{{ $user->email}} </h3>
-                    <ul>
-                        <li><strong>Instagram</strong>: {{ $user->profile->instagram }}</li>
-                        <li><strong>GitHub</strong>: {{ $user->profile->github }}</li>
-                        <li><strong>Web</strong>: {{ $user->profile->web }}</li>
-                    </ul>
-                    <p>
-                        <strong>Localizacion: </strong> 
-                        {{ $user->profile->location->country }}
-                    </p>
-                    <p>
-                        <strong>Level: </strong>
-                        @if ($user->level) 
-                            <a href="{{ route('level', $user->level->id) }}">{{$user->level->name}}</a>
-                        @else
-                            <em>No posee</em>
-                        @endif
-                    </p>
-
+                    <h1>Contenido nivel {{ $level->name }}</h1>
                     <hr>
-
-                    <p>
-                        <strong>Grupos: </strong>
-                        @forelse($user->groups as $group)
-                            <a href="#" class="badge badge-primary">{{ $group->name }}</a>
-                        @empty
-                            <em>No pertenece a ningun grupo</em>
-                        @endforelse
-                    </p>
-
-                    <hr>
-                    
                     <h3>Posts</h3>
                     <div class="row">
                         @foreach ($posts as $post)
@@ -74,7 +40,7 @@
                                         </span>
                                       @endforeach  
                                     </p>
-                                </div><!--card-body -->
+                                </div><!--car-body -->
                             </div><!--col -->
                             </div><!--row -->
                             </div><!--card -->
@@ -92,7 +58,7 @@
                                 <img src="{{ asset($video->image->url) }}" alt="card-imagen" class="card-img">
                             </div><!--col -->
                             <div class="col-md-8">
-                                <div class="card-body"> 
+                               <div class="card-body"> 
                                     <h5 class="card-title"> {{$video->name}} </h5>
                                     <h6 class="card-subtitle text-muted"> 
                                         {{ $video->category->name }} |
@@ -106,7 +72,7 @@
                                         </span>
                                       @endforeach  
                                     </p>
-                                </div><!--card-body -->    
+                                </div><!--car-body -->
                             </div><!--col -->
                             </div><!--row -->
                             </div><!--card -->
